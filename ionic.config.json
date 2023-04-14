@@ -1,0 +1,8 @@
+{
+  "name": "simetriapp",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular",
+  "id": "334353ff"
+}
