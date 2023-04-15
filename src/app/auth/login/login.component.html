@@ -1,0 +1,31 @@
+<ion-grid>
+  <ion-row>
+    <ion-col>
+      <h4 class="ion-text-center">Simetria App</h4>
+      <small class="ion-text-center">Digite as suas credenciais abaixo para entrar no aplicativo</small>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col size="12">
+      <ion-input
+        type="email"
+        fill="solid"
+        label="Email"
+        labelPlacement="floating"
+        errorText="Invalid email"
+        ngModel
+        email
+      ></ion-input>
+      <br>
+      <ion-input
+        type="password"
+        fill="solid"
+        label="Senha"
+        labelPlacement="floating"
+        ngModel
+      ></ion-input>
+      <br>
+      <ion-button color="tertiary" expand="full">ENTRAR</ion-button>
+    </ion-col>
+  </ion-row>
+</ion-grid>
