@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import {BaseStorageService} from "./base.storage.service";
+import {Router} from "@angular/router";
 
 @Injectable({
   providedIn: 'root'
@@ -7,6 +8,7 @@ import {BaseStorageService} from "./base.storage.service";
 export class AuthService {
 
   constructor(
+    private _navigate : Router,
     private _baseStorageService: BaseStorageService
   ) { }
 
@@ -14,17 +16,21 @@ export class AuthService {
     let authData = this._baseStorageService.getObject("authData");
 
     if(authData.token) {
-      if(this.isAdmin()) {
-
+      if(this.isAdmin(authData)) {
+        this._navigate.navigate(["admin"]);
+      } else if (this.isAluno(authData)) {
+        this._navigate.navigate(["aluno"]);
       }
     }
+
+    return false;
   }
 
-  isAdmin() {
-    return true;
+  isAdmin(authData : any) {
+    return !!authData.isAdmin;
   }
 
-  isAluno() {
-    return true;
+  isAluno(authData : any) {
+    return !!authData.isAluno;
   }
 }

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {AuthService} from "../core/services/auth.service";
 
 @Component({
   selector: 'app-auth',
@@ -6,18 +7,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./auth.component.scss'],
 })
 export class AuthComponent  implements OnInit {
-
-
-  constructor() { }
+  loading: boolean = true;
+  constructor(
+    private _authService : AuthService
+  ) { }
 
   ngOnInit() {
-    // -- verify if is logged
+    this._authService.isLogged();
 
-    // -- is logged ?
-
-    // -- is admin ? redirect to admin page
-
-    // -- is aluno ? redirect to aluno page
+    setTimeout(() => {
+      this.loading = false;
+    }, 1000) 
   }
 
 }
