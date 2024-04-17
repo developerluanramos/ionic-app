@@ -8,18 +8,28 @@ import {AuthService} from "../../core/services/auth.service";
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent  implements OnInit {
+  /*
+  * vars
+  * */
   public auth: AuthInterface = {
     email: '',
     password: '',
     device_name: ''
   };
+  /*
+  * construct
+  * */
   constructor(
     private _authService: AuthService
   ) { }
 
-  ngOnInit() {}
+  ngOnInit() { }
 
   doLogin() {
-    this._authService.doLogin(this.auth);
+    this._authService.doLogin(this.auth).subscribe((response: any) => {
+      console.log(response)
+    }, (error: any) => {
+      console.log(error)
+    });
   }
 }

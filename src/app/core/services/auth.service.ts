@@ -2,6 +2,9 @@ import { Injectable } from '@angular/core';
 import {BaseStorageService} from "./base.storage.service";
 import {Router} from "@angular/router";
 import {AuthInterface} from "../models/auth.interface";
+import {environment} from "../../../environments/environment";
+import { HttpClient } from "@angular/common/http";
+import {HttpService} from "./http.service";
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +13,8 @@ export class AuthService {
 
   constructor(
     private _navigate : Router,
-    private _baseStorageService: BaseStorageService
+    private _baseStorageService: BaseStorageService,
+    private _httpService: HttpService
   ) { }
 
   isLogged() {
@@ -33,7 +37,7 @@ export class AuthService {
     return !!authData.isAluno;
   }
 
-  doLogin(authData: AuthInterface) {
-    return {};
+  doLogin(authData: AuthInterface)  {
+    return this._httpService.post('auth/token', authData);
   }
 }
