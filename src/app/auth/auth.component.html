@@ -1,7 +1,6 @@
-<small style="margin: 10px" *ngIf="loading">carregando dados...</small>
-<ion-app  *ngIf="!loading">
+<small style="margin: 10px" *ngIf="loading">iniciando aplicativo...</small>
+<ion-app *ngIf="!loading">
   <ion-content class="ion-padding">
     <ion-router-outlet></ion-router-outlet>
   </ion-content>
 </ion-app>
-

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {BaseStorageService} from "./base.storage.service";
 import {Router} from "@angular/router";
+import {AuthInterface} from "../models/auth.interface";
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +15,6 @@ export class AuthService {
 
   isLogged() {
     let authData = this._baseStorageService.getObject("authData");
-
     if(authData.token) {
       if(this.isAdmin(authData)) {
         this._navigate.navigate(["admin"]);
@@ -22,7 +22,6 @@ export class AuthService {
         this._navigate.navigate(["aluno"]);
       }
     }
-
     return false;
   }
 
@@ -32,5 +31,9 @@ export class AuthService {
 
   isAluno(authData : any) {
     return !!authData.isAluno;
+  }
+
+  doLogin(authData: AuthInterface) {
+    return {};
   }
 }
