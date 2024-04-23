@@ -1,16 +1,13 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {BaseStorageService} from "./base.storage.service";
 import {Router} from "@angular/router";
 import {AuthInterface} from "../models/auth.interface";
-import {environment} from "../../../environments/environment";
-import { HttpClient } from "@angular/common/http";
 import {HttpService} from "./http.service";
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-
   constructor(
     private _navigate : Router,
     private _baseStorageService: BaseStorageService,

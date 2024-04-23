@@ -12,9 +12,9 @@ export class LoginComponent  implements OnInit {
   * vars
   * */
   public auth: AuthInterface = {
-    email: '',
-    password: '',
-    device_name: ''
+    email: 'luan.developer@gmail.com',
+    password: 'Aq!sw2de3',
+    token_name: 'app'
   };
   /*
   * construct
@@ -25,11 +25,7 @@ export class LoginComponent  implements OnInit {
 
   ngOnInit() { }
 
-  doLogin() {
-    this._authService.doLogin(this.auth).subscribe((response: any) => {
-      console.log(response)
-    }, (error: any) => {
-      console.log(error)
-    });
+  async doLogin() {
+    this._authService.doLogin(this.auth);
   }
 }
